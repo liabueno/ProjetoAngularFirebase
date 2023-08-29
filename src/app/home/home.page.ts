@@ -25,12 +25,29 @@ export class HomePage {
 
   public file: any = {};
 
+  teste_api: any;
+
   constructor(
     public _authenticate: AuthenticateService,
     private _crudService: CrudService,
     public storage: Storage,
     private _message: MessageService
   ) { }
+
+  testeAPI(){
+    fetch('http://localhost/sistema_de_receitas/api/request/index.php')
+    .then(resposta => resposta.json())
+    .then((dados_da_api) => {
+      console.log(dados_da_api);
+      this.teste_api = dados_da_api['text'];
+    })
+    .catch(erro => {
+      console.log(erro);
+    })
+    .finally(() => {
+      console.log('processo finalizado');
+    })
+  }
 
   criarConta(dados: any){
     this._authenticate.register(dados.email, dados.password)
