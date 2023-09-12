@@ -8,6 +8,33 @@
 
 <ion-content [fullscreen]="true">
 
+    <ion-row>
+      <ion-col size="12">
+        <ion-list>
+          <ng-container *ngFor="let funcionario of this.funcionarios">
+            <ion-item>
+              <ion-label>{{ funcionario.Sobrenome }}</ion-label>
+              <ion-label>{{ funcionario.Nome }}</ion-label>
+              <ion-label>{{ funcionario.Cargo }}</ion-label>
+              <ion-label>{{ funcionario.DataNasc }}</ion-label>
+              <ion-label>{{ funcionario.Endereco }}</ion-label>
+              <ion-label>{{ funcionario.Cidade }}</ion-label>
+              <ion-label>{{ funcionario.CEP }}</ion-label>
+              <ion-label>{{ funcionario.Pais }}</ion-label>
+              <ion-label>{{ funcionario.Fone }}</ion-label>
+              <ion-label>{{ funcionario.Cidade }}</ion-label>
+              <ion-button (click)="remover(funcionario.CodFun)">Remover</ion-button>
+              <ion-button (click)="atualizar(funcionario.CodFun)">Atualizar</ion-button>
+            </ion-item>
+        </ng-container>
+        </ion-list>
+        
+        
+      </ion-col>
+    </ion-row>
+
+
+
   
 
 </ion-content>
