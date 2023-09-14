@@ -41,7 +41,8 @@ export class HomePage {
 		)
     .then(response => response.json())
     .then(response => {
-      console.log(response);
+      console.log(response['mensagem']);
+      this.getFuncionarios()
     })
     .catch(erro => {
       console.log(erro);
@@ -75,27 +76,31 @@ export class HomePage {
   }
 
   
-  // inserir(CodFun: any){
-  //   this.isLoading = true;
-  //   fetch('http://localhost/exercicio/funcionario/inserir_funcionario.php',
-	// 		{
-	// 		  method: 'POST',
-	// 		  headers: {
-	// 		    'Content-Type': 'application/json',
-	// 		  },
-	// 		  body: JSON.stringify({ CodFun: CodFun, Acao: 'inserir'})
-	// 		}
-	// 	)
-  //   .then(response => response.json())
-  //   .then(response => {
-  //     console.log(response);
-  //   })
-  //   .catch(erro => {
-  //     console.log(erro);
-  //   })
-  //   .finally(()=>{
-  //     this.isLoading = false;
-  //   })  
-  // }
+  inserirDados(Dados: any){
+    this.isLoading = true;
+    fetch('http://localhost/exercicio/funcionario/inserir_funcionario.php',
+			{
+			  method: 'POST',
+			  headers: {
+			    'Content-Type': 'application/json',
+			  },
+			  body: JSON.stringify(
+          { 
+            nome: Dados.nome,
+            
+          })
+			}
+		)
+    .then(response => response.json())
+    .then(response => {
+      console.log(response);
+    })
+    .catch(erro => {
+      console.log(erro);
+    })
+    .finally(()=>{
+      this.isLoading = false;
+    })  
+  }
 
 }
