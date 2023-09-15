@@ -86,8 +86,46 @@ export class HomePage {
 			  },
 			  body: JSON.stringify(
           { 
-            nome: Dados.nome,
-            
+            nome: Dados.Nome,
+            sobrenome: Dados.Sobrenome,
+            cargo: Dados.Cargo,
+            salario: Dados.Salario,
+            datanasc: Dados.DataNasc,
+            pais: Dados.Pais,
+            cidade: Dados.Cidade,
+            cep: Dados.CEP,
+            endereco: Dados.Endereco,
+            fone: Dados.Fone
+          })
+			}
+		)
+    .then(response => response.json())
+    .then(response => {
+      console.log(response);
+    })
+    .catch(erro => {
+      console.log(erro);
+    })
+    .finally(()=>{
+      this.isLoading = false;
+    })  
+  }
+
+  pesquisar(Dados: any){
+    this.isLoading = true;
+    fetch('http://localhost/exercicio/funcionario/consultar_funcionario_por_filtro.php',
+			{
+			  method: 'POST',
+			  headers: {
+			    'Content-Type': 'application/json',
+			  },
+			  body: JSON.stringify(
+          { 
+            search: Dados.search,
+            cargo: Dados.cargo,
+            cidade: Dados.cidade,
+            fone: Dados.fone,
+            nome: Dados.nome
           })
 			}
 		)

@@ -15,9 +15,21 @@
       </ion-col>
       <ion-col size="6">
         <ion-button type="submit">Consultar</ion-button>
-        <ion-checkbox ngModel name="themed1">Themed checkbox</ion-checkbox>
-        <ion-checkbox ngModel name="themed1">Themed checkbox</ion-checkbox>
-        <ion-checkbox ngModel name="themed1">Themed checkbox</ion-checkbox>
+        <!-- <ion-radio-group value="filtros">
+          <ion-radio ngModel value="cargo" name="cargo">Cargo</ion-radio>
+          <ion-radio ngModel value="nome" name="nome">Nome</ion-radio>
+          <ion-radio ngModel value="cidade" name="cidade">Cidade</ion-radio>
+          <ion-radio ngModel value="fone" name="fone">Telefone</ion-radio>
+        </ion-radio-group> -->
+        
+        <ion-radio-group value="filtros">
+          <ion-radio name="cargo">Cargo</ion-radio>
+          <ion-radio name="nome">Nome</ion-radio>
+          <ion-radio name="cidade">Cidade</ion-radio>
+          <ion-radio name="telefone">Fone</ion-radio>
+        </ion-radio-group>
+
+
         <ion-button id="open-modal">Inserir</ion-button>
       </ion-col>
     </ion-row>
@@ -28,15 +40,15 @@
         <ion-list>
           <ng-container *ngFor="let funcionario of this.funcionarios">
             <ion-item>
-              <ion-label>{{ funcionario.CodFun }}</ion-label>
-              <ion-label>{{ funcionario.Sobrenome }}</ion-label>
+              <!-- <ion-label>{{ funcionario.CodFun }}</ion-label>
+              <ion-label>{{ funcionario.Sobrenome }}</ion-label> -->
               <ion-label>{{ funcionario.Nome }}</ion-label>
               <ion-label>{{ funcionario.Cargo }}</ion-label>
-              <ion-label>{{ funcionario.DataNasc }}</ion-label>
-              <ion-label>{{ funcionario.Endereco }}</ion-label>
+              <!-- <ion-label>{{ funcionario.DataNasc }}</ion-label>
+              <ion-label>{{ funcionario.Endereco }}</ion-label> -->
               <ion-label>{{ funcionario.Cidade }}</ion-label>
-              <ion-label>{{ funcionario.CEP }}</ion-label>
-              <ion-label>{{ funcionario.Pais }}</ion-label>
+              <!-- <ion-label>{{ funcionario.CEP }}</ion-label> -->
+              <!-- <ion-label>{{ funcionario.Pais }}</ion-label> -->
               <ion-label>{{ funcionario.Fone }}</ion-label>
               <ion-label>{{ funcionario.Cidade }}</ion-label>
               <ion-button (click)="remover(funcionario.CodFun)">Remover</ion-button>
