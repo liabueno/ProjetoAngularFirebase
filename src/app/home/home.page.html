@@ -14,6 +14,12 @@
         <ion-searchbar ngModel name="search" placeholder="Custom Placeholder"></ion-searchbar>
       </ion-col>
       <ion-col size="6">
+        <ion-radio-group value="filtros">
+          <ion-radio name="cargo">Cargo</ion-radio>
+          <ion-radio name="nome">Nome</ion-radio>
+          <ion-radio name="cidade">Cidade</ion-radio>
+          <ion-radio name="telefone">Fone</ion-radio>
+        </ion-radio-group>
         <ion-button type="submit">Consultar</ion-button>
         <!-- <ion-radio-group value="filtros">
           <ion-radio ngModel value="cargo" name="cargo">Cargo</ion-radio>
@@ -22,15 +28,9 @@
           <ion-radio ngModel value="fone" name="fone">Telefone</ion-radio>
         </ion-radio-group> -->
         
-        <ion-radio-group value="filtros">
-          <ion-radio name="cargo">Cargo</ion-radio>
-          <ion-radio name="nome">Nome</ion-radio>
-          <ion-radio name="cidade">Cidade</ion-radio>
-          <ion-radio name="telefone">Fone</ion-radio>
-        </ion-radio-group>
+       
 
 
-        <ion-button id="open-modal">Inserir</ion-button>
       </ion-col>
     </ion-row>
   </form>
@@ -56,6 +56,8 @@
             </ion-item>
         </ng-container>
         </ion-list>
+        <ion-button id="open-modal">Inserir</ion-button>
+
         
         <ion-modal trigger="open-modal">
           <ng-template>
