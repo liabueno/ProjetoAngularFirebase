@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -12,6 +14,7 @@ export class HomePage {
   constructor(){
     this.getFuncionarios()
   }
+  
 
   getFuncionarios(){
     this.isLoading = true;
@@ -27,6 +30,8 @@ export class HomePage {
       this.isLoading = false;
     })
   }
+
+
 
   remover(CodFun: any){
     this.isLoading = true;
@@ -52,6 +57,8 @@ export class HomePage {
     })  
   }
 
+
+
   atualizar(CodFun: any){
     this.isLoading = true;
     fetch('http://localhost/exercicio/funcionario/atualizar_funcionario.php',
@@ -74,6 +81,7 @@ export class HomePage {
       this.isLoading = false;
     })  
   }
+
 
   
   inserirDados(Dados: any){
@@ -110,6 +118,8 @@ export class HomePage {
       this.isLoading = false;
     })  
   }
+
+
 
   pesquisar(Dados: any){
     this.isLoading = true;
