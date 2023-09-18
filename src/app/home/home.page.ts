@@ -1,166 +1,165 @@
 import { Component } from '@angular/core';
-
+import { AuthenticateService } from '../services/auth.service';
+import { CrudService } from '../services/crud.service';
+import { Storage, getDownloadURL, ref, uploadBytesResumable } from '@angular/fire/storage';
+import { MessageService } from '../services/message.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-
 export class HomePage {
   isLoading: boolean = false;
-  funcionarios: any;
 
-  constructor(){
-    this.getFuncionarios()
+  alunos = [];
+
+  nome = 'Joaozinho';
+
+  aluno = {
+    nome: null,
+    idade: null,
+    ra: null,
+    id: null
   }
-  
 
-  getFuncionarios(){
-    this.isLoading = true;
-    fetch('http://localhost/exercicio/funcionario/listar_funcionario.php')
-    .then(response => response.json())
-    .then(response => {
-      this.funcionarios = response['funcionarios']
+  public file: any = {};
+
+  teste_api: any;
+
+  constructor(
+    public _authenticate: AuthenticateService,
+    private _crudService: CrudService,
+    public storage: Storage,
+    private _message: MessageService
+  ) { }
+
+  testeAPI(){
+    fetch('http://localhost/sistema_de_receitas/api/request/index.php')
+    .then(resposta => resposta.json())
+    .then((dados_da_api) => {
+      console.log(dados_da_api);
+      this.teste_api = dados_da_api['text'];
     })
     .catch(erro => {
       console.log(erro);
     })
-    .finally(()=>{
-      this.isLoading = false;
+    .finally(() => {
+      console.log('processo finalizado');
+    })
+  }
+
+  criarConta(dados: any){
+    this._authenticate.register(dados.email, dados.password)
+  }
+
+  realizarLogin(dados: any) {
+    this._authenticate.login(dados.email, dados.password);
+  }
+
+  inserirAluno(dados: any){
+    this.aluno.nome = dados.nome;
+    // this.aluno.idade = 10;
+    // this.aluno.ra = 321321;
+
+    this._crudService.insert(this.aluno, 'alunos');
+  }
+
+  listarAlunos(){
+    this._crudService.fetchAll('alunos')
+    .then( alunos => {
+      this.alunos = alunos;
     })
   }
 
 
-
-  remover(CodFun: any){
-    this.isLoading = true;
-    fetch('http://localhost/exercicio/funcionario/remover_funcionario.php',
-			{
-			  method: 'POST',
-			  headers: {
-			    'Content-Type': 'application/json',
-			  },
-			  body: JSON.stringify({ CodFun: CodFun, Acao: 'remover'})
-			}
-		)
-    .then(response => response.json())
-    .then(response => {
-      console.log(response['mensagem']);
-      this.getFuncionarios()
-    })
-    .catch(erro => {
-      console.log(erro);
-    })
-    .finally(()=>{
-      this.isLoading = false;
-    })  
+  removerAluno(aluno: any){
+    console.log(aluno);
+    this._crudService.remove(aluno.id, 'alunos')
   }
 
-
-
-  atualizar(CodFun: any, Dados: any){
-    this.isLoading = true;
-
-    fetch('http://localhost/exercicio/funcionario/atualizar_funcionario.php',
-			{
-			  method: 'POST',
-			  headers: {
-			    'Content-Type': 'application/json',
-			  },
-			  body: JSON.stringify({
-          CodFun: CodFun,
-          Nome: Dados.nome,
-          Sobrenome: Dados.sobrenome,
-          Cargo: Dados.cargo,
-          Salario: Dados.salario,
-          DataNasc: Dados.dataNasc,
-          Pais: Dados.pais,
-          Cidade: Dados.cidade,
-          CEP: Dados.cep,
-          Endereco: Dados.endereco,
-          Fone: Dados.fone
-        })
-			}
-		)
-    .then(response => response.json())
-    .then(response => {
-      console.log(response);
+  consultarAluno(dados: any){
+    console.log(dados);
+    this._crudService.fetchByOperatorParam('nome', '==', dados.nome, 'alunos')
+    .then( aluno => {
+      console.log(aluno[0].id);
     })
-    .catch(erro => {
-      console.log(erro);
-    })
-    .finally(()=>{
-      this.isLoading = false;
-    })  
   }
 
-
-  
-  inserirDados(Dados: any){
-    this.isLoading = true;
-    fetch('http://localhost/exercicio/funcionario/inserir_funcionario.php',
-			{
-			  method: 'POST',
-			  headers: {
-			    'Content-Type': 'application/json',
-			  },
-			  body: JSON.stringify(
-          { 
-            nome: Dados.Nome,
-            sobrenome: Dados.Sobrenome,
-            cargo: Dados.Cargo,
-            salario: Dados.Salario,
-            datanasc: Dados.DataNasc,
-            pais: Dados.Pais,
-            cidade: Dados.Cidade,
-            cep: Dados.CEP,
-            endereco: Dados.Endereco,
-            fone: Dados.Fone
-          })
-			}
-		)
-    .then(response => response.json())
-    .then(response => {
-      console.log(response);
-    })
-    .catch(erro => {
-      console.log(erro);
-    })
-    .finally(()=>{
-      this.isLoading = false;
-    })  
+  atualizarDadosAluno(dados: any){
+    if (this.aluno.id == null) {
+      this._crudService.fetchByOperatorParam('nome', '==', dados.nome, 'alunos')
+      .then( aluno => {
+        this.aluno = aluno[0];
+        console.log(this.aluno);
+      })
+    } else {
+      this._crudService.update(this.aluno.id, dados, 'alunos');
+    }
   }
 
+  memorizarArquivo(event: any) {
+    this.file = event.target.files[0];
+  }
 
+  fazerUpload() {
+    if (!this.file.name) {
+      this._message.show('Favor selecionar o arquivo a ser enviado', 5000);
+      return;
+    }
 
-  pesquisar(Dados: any){
-    this.isLoading = true;
-    fetch('http://localhost/exercicio/funcionario/consultar_funcionario_por_filtro.php',
-			{
-			  method: 'POST',
-			  headers: {
-			    'Content-Type': 'application/json',
-			  },
-			  body: JSON.stringify(
-          { 
-            search: Dados.search,
-            cargo: Dados.cargo,
-            cidade: Dados.cidade,
-            fone: Dados.fone,
-            nome: Dados.nome
-          })
-			}
-		)
-    .then(response => response.json())
-    .then(response => {
-      console.log(response);
-    })
-    .catch(erro => {
-      console.log(erro);
-    })
-    .finally(()=>{
-      this.isLoading = false;
-    })  
+    // Upload file and metadata to the object 'images/mountains.jpg'
+      const storageRef = ref(this.storage, this.file.name);
+      const uploadTask = uploadBytesResumable(storageRef, this.file);
+
+      // Listen for state changes, errors, and completion of the upload.
+      uploadTask.on('state_changed',
+        (snapshot) => {
+          // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+
+          console.log('Upload is ' + progress + '% done');
+
+          switch (snapshot.state) {
+            case 'paused':
+              console.log('Envio pausado');
+              break;
+            case 'running':
+              console.log('Carregando arquivo');
+              this._message.show('Carregando arquivo, favor aguardar!', 2000);
+              break;
+          }
+        },
+        (error) => {
+          // A full list of error codes is available at
+          // https://firebase.google.com/docs/storage/web/handle-errors
+          switch (error.code) {
+            case 'storage/unauthorized':
+              // User doesn't have permission to access the object
+              console.log('Não enviado! Usuário sem permissão');
+              this._message.show('Não enviado! Usuário sem permissão!');
+              break;
+            case 'storage/canceled':
+              // User canceled the upload
+              console.log('Não enviado: upload cancelado');
+              this._message.show('Erro: Upload cancelado!');
+              break;
+            case 'storage/unknown':
+              // Unknown error occurred, inspect error.serverResponse
+              console.log('Não enviado. Ocorreu um erro desconhecido!');
+              this._message.show('Oops! Ocorreu um erro desconhecido!');
+              break;
+          }
+
+          console.log('Arquivo enviado com sucess!');
+          this._message.show('Arquivo enviado com sucesso!');
+        },
+        () => {
+          // Upload completed successfully, now we can get the download URL
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            console.log('Url do arquivo é ' + downloadURL)
+          });
+        }
+      );
   }
 }
