@@ -59,15 +59,28 @@ export class HomePage {
 
 
 
-  atualizar(CodFun: any){
+  atualizar(CodFun: any, Dados: any){
     this.isLoading = true;
+
     fetch('http://localhost/exercicio/funcionario/atualizar_funcionario.php',
 			{
 			  method: 'POST',
 			  headers: {
 			    'Content-Type': 'application/json',
 			  },
-			  body: JSON.stringify({ CodFun: CodFun, Acao: 'atualizar'})
+			  body: JSON.stringify({
+          CodFun: CodFun,
+          Nome: Dados.nome,
+          Sobrenome: Dados.sobrenome,
+          Cargo: Dados.cargo,
+          Salario: Dados.salario,
+          DataNasc: Dados.dataNasc,
+          Pais: Dados.pais,
+          Cidade: Dados.cidade,
+          CEP: Dados.cep,
+          Endereco: Dados.endereco,
+          Fone: Dados.fone
+        })
 			}
 		)
     .then(response => response.json())

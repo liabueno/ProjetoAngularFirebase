@@ -39,21 +39,24 @@
       <ion-col size="12">
         <ion-list>
           <ng-container *ngFor="let funcionario of this.funcionarios">
+            <form #form='ngForm' (ngSubmit)="atualizar(funcionario.CodFun, form.value)">
             <ion-item>
-              <ion-label>{{ funcionario.CodFun }}</ion-label>
-              <!--<ion-label>{{ funcionario.Sobrenome }}</ion-label> -->
-              <ion-label>{{ funcionario.Nome }}</ion-label>
-              <ion-label>{{ funcionario.Cargo }}</ion-label>
-              <!-- <ion-label>{{ funcionario.DataNasc }}</ion-label>
-              <ion-label>{{ funcionario.Endereco }}</ion-label> -->
-              <ion-label>{{ funcionario.Cidade }}</ion-label>
-              <!-- <ion-label>{{ funcionario.CEP }}</ion-label> -->
-              <!-- <ion-label>{{ funcionario.Pais }}</ion-label> -->
-              <ion-label>{{ funcionario.Fone }}</ion-label>
-              <ion-label>{{ funcionario.Cidade }}</ion-label>
-              <ion-button (click)="remover(funcionario.CodFun)">Remover</ion-button>
-              <ion-button (click)="atualizar(funcionario.CodFun)" fill="clear" color="dark" id="open-modal-atualizar">v</ion-button> 
+                <ion-label>{{ funcionario.CodFun }}</ion-label>
+                <ion-input [(ngModel)]="funcionario.Nome" name="nome"></ion-input>
+                <ion-input [(ngModel)]="funcionario.Sobrenome" name="sobrenome"></ion-input>
+                <ion-input [(ngModel)]="funcionario.Cargo" name="cargo"></ion-input>
+                <ion-input [(ngModel)]="funcionario.Salario" name="salario"></ion-input>
+                <ion-input [(ngModel)]="funcionario.DataNasc" name="dataNasc"></ion-input>
+                <ion-input [(ngModel)]="funcionario.Endereco" name="endereco"></ion-input>
+                <ion-input [(ngModel)]="funcionario.Cidade" name="cidade"></ion-input>
+                <ion-input [(ngModel)]="funcionario.CEP" name="cep"></ion-input>
+                <ion-input [(ngModel)]="funcionario.Pais" name="pais"></ion-input>
+                <ion-input [(ngModel)]="funcionario.Fone" name="fone"></ion-input>
+                
+              <ion-button type="submit">OK</ion-button> 
+              <ion-button (click)="remover(funcionario.CodFun)">X</ion-button>
             </ion-item>
+          </form>
         </ng-container>
         </ion-list>
         <ion-button id="open-modal">Inserir</ion-button>
