@@ -151,7 +151,7 @@ export class HomePage {
               break;
           }
 
-          console.log('Arquivo enviado');
+          console.log('Arquivo enviado com sucess!');
           this._message.show('Arquivo enviado com sucesso!');
         },
         () => {
@@ -162,5 +162,4 @@ export class HomePage {
         }
       );
   }
-
 }
