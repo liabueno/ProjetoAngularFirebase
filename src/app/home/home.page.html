@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
+  <ion-toolbar  class="cabecalho">
+    <ion-title  class="titulo">
       Funcionários
     </ion-title>
   </ion-toolbar>
@@ -11,26 +11,16 @@
   <form #form_pesquisar = 'ngForm' (onSubmit)="pesquisar(form_pesquisar.value)">
     <ion-row>
       <ion-col size="6">
-        <ion-searchbar ngModel name="search" placeholder="Custom Placeholder"></ion-searchbar>
+        <ion-searchbar search-icon="search-circle" show-clear-button="focus" value="Show on Focus" ngModel name="search" placeholder="Informe sua busca"></ion-searchbar>
       </ion-col>
       <ion-col size="6">
         <ion-radio-group value="filtros">
-          <ion-radio name="cargo">Cargo</ion-radio>
-          <ion-radio name="nome">Nome</ion-radio>
-          <ion-radio name="cidade">Cidade</ion-radio>
-          <ion-radio name="telefone">Fone</ion-radio>
+          <ion-radio color="primary" id="cargo" ngModel name="cargo">Cargo</ion-radio> 
+          <ion-radio color="tertiary" id="nome" ngModel name="nome">Nome</ion-radio> 
+          <ion-radio color="medium" id="cidade" ngModel name="cidade">Cidade</ion-radio> 
+          <ion-radio color="success" id="telefone" ngModel name="telefone">Telefone</ion-radio>
         </ion-radio-group>
-        <ion-button type="submit">Consultar</ion-button>
-        <!-- <ion-radio-group value="filtros">
-          <ion-radio ngModel value="cargo" name="cargo">Cargo</ion-radio>
-          <ion-radio ngModel value="nome" name="nome">Nome</ion-radio>
-          <ion-radio ngModel value="cidade" name="cidade">Cidade</ion-radio>
-          <ion-radio ngModel value="fone" name="fone">Telefone</ion-radio>
-        </ion-radio-group> -->
-        
-       
-
-
+        <ion-button type="submit" class="consultar">Consultar</ion-button>
       </ion-col>
     </ion-row>
   </form>
@@ -41,58 +31,53 @@
           <ng-container *ngFor="let funcionario of this.funcionarios">
             <form #form='ngForm' (ngSubmit)="atualizar(funcionario.CodFun, form.value)">
             <ion-item>
-                <ion-label>{{ funcionario.CodFun }}</ion-label>
-                <ion-input [(ngModel)]="funcionario.Nome" name="nome"></ion-input>
-                <ion-input [(ngModel)]="funcionario.Sobrenome" name="sobrenome"></ion-input>
-                <ion-input [(ngModel)]="funcionario.Cargo" name="cargo"></ion-input>
-                <ion-input [(ngModel)]="funcionario.Salario" name="salario"></ion-input>
-                <ion-input [(ngModel)]="funcionario.DataNasc" name="dataNasc"></ion-input>
-                <ion-input [(ngModel)]="funcionario.Endereco" name="endereco"></ion-input>
-                <ion-input [(ngModel)]="funcionario.Cidade" name="cidade"></ion-input>
-                <ion-input [(ngModel)]="funcionario.CEP" name="cep"></ion-input>
-                <ion-input [(ngModel)]="funcionario.Pais" name="pais"></ion-input>
-                <ion-input [(ngModel)]="funcionario.Fone" name="fone"></ion-input>
+                <!-- <ion-label>{{ funcionario.CodFun }}</ion-label> -->
+                <ion-input [(ngModel)]="funcionario.Nome" name="nome" class="dados">Nome:</ion-input>
+                <ion-input [(ngModel)]="funcionario.Sobrenome" name="sobrenome" class="dados">Sobrenome:</ion-input>
+                <ion-input [(ngModel)]="funcionario.Cargo" name="cargo" class="dados">Cargo:</ion-input>
+                <ion-input [(ngModel)]="funcionario.Salario" name="salario" class="dados">Salário:</ion-input>
+                <ion-input [(ngModel)]="funcionario.DataNasc" name="dataNasc" class="dados">Data de Nascimento:</ion-input>
+                <ion-input [(ngModel)]="funcionario.Endereco" name="endereco" class="dados">Endereço:</ion-input>
+                <ion-input [(ngModel)]="funcionario.Cidade" name="cidade" class="dados">Cidade:</ion-input>
+                <ion-input [(ngModel)]="funcionario.CEP" name="cep" class="dados">CEP:</ion-input>
+                <ion-input [(ngModel)]="funcionario.Pais" name="pais" class="dados">País:</ion-input>
+                <ion-input [(ngModel)]="funcionario.Fone" name="fone" class="dados">Telefone:</ion-input>
                 
-              <ion-button type="submit">OK</ion-button> 
-              <ion-button (click)="remover(funcionario.CodFun)">X</ion-button>
+              <ion-button type="submit" class="ok"><ion-icon name="checkmark"></ion-icon></ion-button> 
+              <ion-button (click)="remover(funcionario.CodFun)" class="remover"><ion-icon name="close"></ion-icon></ion-button>
             </ion-item>
           </form>
         </ng-container>
         </ion-list>
-        <ion-button id="open-modal">Inserir</ion-button>
-
+        <ion-button id="open-modal" class="adicionar"><ion-icon name="add" ></ion-icon></ion-button>
+      </ion-col>
+    </ion-row>
         
 
         <!-- ION MODAL  -->
         <ion-modal trigger="open-modal">
           <ng-template>
             <ion-header>
-              <ion-toolbar>
-                <ion-buttons slot="start">
-                  <ion-button >Cancel</ion-button>
-                </ion-buttons>
-                <ion-title>Welcome</ion-title>
-                <ion-buttons slot="end">
-                  <ion-button [strong]="true">Confirm</ion-button>
-                </ion-buttons>
+              <ion-toolbar class="modal">
+                <ion-title class="cadastro">Cadastro de Funcionário</ion-title>
               </ion-toolbar>
             </ion-header>
             <ion-content class="ion-padding">
-              <ion-item>
-
-                <form #form_inserir = 'ngForm' (onSubmit)="inserirDados(form_inserir.value)">
+              <ion-item >
+            
+                <form #form_inserir = 'ngForm' (onSubmit)="inserirDados(form_inserir.value)" class="centralizar">
                   <ion-item>
                     <ion-label position="stacked">Nome</ion-label>
                     <ion-input ngModel name="nome"></ion-input>
                   </ion-item>
 
                   <ion-item>
-                    <ion-label position="stacked">Sobrenome</ion-label>
+                    <ion-label  position="stacked">Sobrenome</ion-label>
                     <ion-input ngModel name="sobrenome"></ion-input>
                   </ion-item>
 
                   <ion-item>
-                    <ion-label position="stacked">Cargo</ion-label>
+                    <ion-label  position="stacked">Cargo</ion-label>
                     <ion-input ngModel name="cargo"></ion-input>
                   </ion-item>
 
@@ -127,12 +112,11 @@
                   </ion-item>
 
                   <ion-item>
-                    <ion-label position="stacked">Telefone</ion-label>
+                    <ion-label  position="stacked">Telefone</ion-label>
                     <ion-input ngModel name="fone"></ion-input>
                   </ion-item>
 
-
-                  <ion-button type="submit">Salvar</ion-button>
+                  <ion-button type="submit" class="salvar">Salvar</ion-button>
                 </form>
                 
               </ion-item>
@@ -143,12 +127,9 @@
       <!-- FIM ION MODAL-->
 
 
-
-      </ion-col>
-    </ion-row>
-
-
-
-  
+      <!-- alinhar modal
+      alinhar botão de inserir 
+    funcionar inserir e consultar
+    filtros todos acionam -->
 
 </ion-content>

@@ -1,0 +1,77 @@
+.cabecalho{
+    --background: rgb(64,192,203);
+    --background: linear-gradient(90deg, rgba(64,192,203,1) 0%, rgba(249,242,231,1) 50%, rgba(174,226,57,1) 100%);
+}
+
+.titulo{
+    --color: white;    
+}
+
+ion-searchbar{
+    --background: rgb(240, 237, 237);
+    margin-top: 25px;
+    margin-left: 5px;
+}
+
+ion-radio{
+    margin-top: 35px;
+    padding: 5px;
+    margin-left: 5px;
+}
+
+.consultar{
+    margin-left: 30px;
+    --background: #40c0cb;
+}
+
+#cargo{
+    color: #3880FF;
+}
+
+#nome{
+    color: #5260FF;
+}
+
+#cidade{
+    color: #92949C;
+}
+
+#telefone{
+    color: #2BD36E;
+}
+
+.dados{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: small;
+}
+
+.adicionar{
+    --background: #00a8c6;
+    // align-items: right;
+    // justify-content: right;
+}
+
+.ok{
+    --background: #8fbe00;
+
+}
+
+.remover{
+    --background: #EB445A;
+}
+
+
+.modal{
+    --background: rgb(174,226,57);
+    --background: linear-gradient(90deg, rgba(174,226,57,1) 0%, rgba(249,242,231,1) 50%, rgba(64,192,203,1) 100%);
+}
+
+.cadastro{
+    text-align: center;
+    color: #92949C;
+}
+
+.salvar{
+    --background: #8fbe00;
+    text-transform: capitalize;
+}
