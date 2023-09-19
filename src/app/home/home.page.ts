@@ -37,7 +37,7 @@ export class HomePage {
     this.isLoading = true;
     fetch('http://localhost/exercicio/funcionario/remover_funcionario.php',
 			{
-			  method: 'POST',
+			  method: 'DELETE',
 			  headers: {
 			    'Content-Type': 'application/json',
 			  },
@@ -64,7 +64,7 @@ export class HomePage {
 
     fetch('http://localhost/exercicio/funcionario/atualizar_funcionario.php',
 			{
-			  method: 'POST',
+			  method: 'PUT',
 			  headers: {
 			    'Content-Type': 'application/json',
 			  },
@@ -107,16 +107,16 @@ export class HomePage {
 			  },
 			  body: JSON.stringify(
           { 
-            nome: Dados.Nome,
-            sobrenome: Dados.Sobrenome,
-            cargo: Dados.Cargo,
-            salario: Dados.Salario,
-            datanasc: Dados.DataNasc,
-            pais: Dados.Pais,
-            cidade: Dados.Cidade,
-            cep: Dados.CEP,
-            endereco: Dados.Endereco,
-            fone: Dados.Fone
+            Nome: Dados.nome,
+            Sobrenome: Dados.sobrenome,
+            Cargo: Dados.cargo,
+            Salario: Dados.salario,
+            DataNasc: Dados.dataNasc,
+            Pais: Dados.pais,
+            Cidade: Dados.cidade,
+            CEP: Dados.cep,
+            Endereco: Dados.endereco,
+            Fone: Dados.fone
           })
 			}
 		)
@@ -138,7 +138,7 @@ export class HomePage {
     this.isLoading = true;
     fetch('http://localhost/exercicio/funcionario/consultar_funcionario_por_filtro.php',
 			{
-			  method: 'POST',
+			  method: 'GET',
 			  headers: {
 			    'Content-Type': 'application/json',
 			  },
