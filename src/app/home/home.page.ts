@@ -122,7 +122,7 @@ export class HomePage {
 		)
     .then(response => response.json())
     .then(response => {
-      console.log(response);
+      this.funcionarios = response['funcionarios'];
     })
     .catch(erro => {
       console.log(erro);
@@ -138,30 +138,28 @@ export class HomePage {
     this.isLoading = true;
     fetch('http://localhost/exercicio/funcionario/consultar_funcionario_por_filtro.php',
 			{
-			  method: 'GET',
+			  method: 'POST',
 			  headers: {
 			    'Content-Type': 'application/json',
 			  },
 			  body: JSON.stringify(
           { 
             search: Dados.search,
-            cargo: Dados.cargo,
-            cidade: Dados.cidade,
-            fone: Dados.fone,
-            nome: Dados.nome
+            filtro : Dados.filtro
           })
 			}
 		)
     .then(response => response.json())
     .then(response => {
-      console.log(response);
+      this.funcionarios = response['funcionarios'];
     })
     .catch(erro => {
       console.log(erro);
     })
     .finally(()=>{
       this.isLoading = false;
-    })  
+    })
+
   }
 
 }

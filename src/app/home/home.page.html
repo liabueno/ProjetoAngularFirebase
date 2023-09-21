@@ -8,19 +8,20 @@
 
 <ion-content [fullscreen]="true">
 
-  <form #form_pesquisar = 'ngForm' (onSubmit)="pesquisar(form_pesquisar.value)">
+  <form #form_pesquisar = 'ngForm' (ngSubmit)="pesquisar(form_pesquisar.value)">
     <ion-row>
       <ion-col size="6">
         <ion-searchbar search-icon="search-circle" show-clear-button="focus" value="Show on Focus" ngModel name="search" placeholder="Informe sua busca"></ion-searchbar>
       </ion-col>
       <ion-col size="6">
-        <ion-radio-group value="filtros">
-          <ion-radio color="primary" id="cargo" ngModel name="cargo">Cargo</ion-radio> 
-          <ion-radio color="tertiary" id="nome" ngModel name="nome">Nome</ion-radio> 
-          <ion-radio color="medium" id="cidade" ngModel name="cidade">Cidade</ion-radio> 
-          <ion-radio color="success" id="telefone" ngModel name="telefone">Telefone</ion-radio>
+        <ion-radio-group name="filtro" ngModel>
+          <ion-radio color="primary" id="cargo"  value="cargo" name="opcao">Cargo</ion-radio> 
+          <ion-radio color="tertiary" id="nome"  value="nome" name="opcao">Nome</ion-radio> 
+          <ion-radio color="medium" id="cidade" value="cidade"  name="opcao">Cidade</ion-radio> 
+          <ion-radio color="success" id="telefone" value="telefone" name="opcao">Telefone</ion-radio>
         </ion-radio-group>
         <ion-button type="submit" class="consultar">Consultar</ion-button>
+        <ion-button id="open-modal" class="adicionar"><ion-icon name="add" ></ion-icon></ion-button>
       </ion-col>
     </ion-row>
   </form>
@@ -49,7 +50,6 @@
           </form>
         </ng-container>
         </ion-list>
-        <ion-button id="open-modal" class="adicionar"><ion-icon name="add" ></ion-icon></ion-button>
       </ion-col>
     </ion-row>
         
@@ -65,7 +65,7 @@
             <ion-content class="ion-padding">
               <ion-item >
             
-                <form #form_inserir = 'ngForm' (onSubmit)="inserirDados(form_inserir.value)" class="centralizar">
+                <form #form_inserir = 'ngForm' (ngSubmit)="inserirDados(form_inserir.value)">
                   <ion-item>
                     <ion-label position="stacked">Nome</ion-label>
                     <ion-input ngModel name="nome"></ion-input>
@@ -128,8 +128,10 @@
 
 
       <!-- alinhar modal
-      alinhar botão de inserir 
-    funcionar inserir e consultar
-    filtros todos acionam -->
+      mensagem de excluir
+      alert
+      ts e id igual
+      public aaaaaaaaa
+     -->
 
 </ion-content>
