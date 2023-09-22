@@ -66,52 +66,52 @@
         <form #form_inserir = 'ngForm' (ngSubmit)="inserirDados(form_inserir.value)"> 
           <ion-list class="formulario">
             <ion-item>
-              <ion-label position="floating">Nome</ion-label>
+              <ion-label position="floating" class="label">Nome</ion-label>
               <ion-input ngModel name="nome"></ion-input>
             </ion-item>
   
             <ion-item>
-              <ion-label  position="floating">Sobrenome</ion-label>
+              <ion-label  position="floating" class="label">Sobrenome</ion-label>
               <ion-input ngModel name="sobrenome"></ion-input>
             </ion-item>
   
             <ion-item>
-              <ion-label  position="floating">Cargo</ion-label>
+              <ion-label  position="floating" class="label">Cargo</ion-label>
               <ion-input ngModel type="text" name="cargo"></ion-input>
             </ion-item>
   
             <ion-item>
-              <ion-label position="floating">Salário</ion-label>
+              <ion-label position="floating" class="label">Salário</ion-label>
               <ion-input ngModel type="number" name="salario"></ion-input>
             </ion-item>
   
             <ion-item>
-              <ion-label position="stacked" >Data de Nascimento</ion-label>
+              <ion-label position="stacked" class="label">Data de Nascimento</ion-label>
               <ion-input ngModel type="date" name="dataNasc"></ion-input>
             </ion-item>
   
             <ion-item>
-              <ion-label position="floating">País</ion-label>
+              <ion-label position="floating" class="label">País</ion-label>
               <ion-input ngModel type="text" name="pais"></ion-input>
             </ion-item>
   
             <ion-item>
-              <ion-label position="floating">Cidade</ion-label>
+              <ion-label position="floating" class="label">Cidade</ion-label>
               <ion-input ngModel type="text" name="cidade"></ion-input>
             </ion-item>
   
             <ion-item>
-              <ion-label position="floating">CEP</ion-label>
+              <ion-label position="floating" class="label">CEP</ion-label>
               <ion-input ngModel type="number" name="cep"></ion-input>
             </ion-item>
   
             <ion-item>
-              <ion-label position="floating">Endereço</ion-label>
+              <ion-label position="floating" class="label">Endereço</ion-label>
               <ion-input ngModel name="endereco"></ion-input>
             </ion-item>
   
             <ion-item>
-              <ion-label  position="floating">Telefone</ion-label>
+              <ion-label  position="floating" class="label">Telefone</ion-label>
               <ion-input ngModel type="tel" name="fone"></ion-input>
             </ion-item>
           </ion-list>

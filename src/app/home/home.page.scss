@@ -46,7 +46,7 @@ ion-radio{
 }
 
 .adicionar{
-    --background: #34b912;
+    --background: #60c547;
     margin-left: 320px;
 }
 
@@ -76,6 +76,13 @@ ion-radio{
     margin-right: 100px;
 }
 
+.label{
+   margin-bottom: 5px;
+}
+
+
+
+
 .sair{
     --background: none;
     margin-right: 10px;
@@ -83,7 +90,7 @@ ion-radio{
 
 
 .salvar{
-    --background: #34b912;
+    --background: #60c547;
     margin-top: 30px;
     height: 5vh;
     width: 10vw;

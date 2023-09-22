@@ -123,8 +123,8 @@ export class HomePage {
 		)
     .then(response => response.json())
     .then(response => {
-      // this.funcionarios = response['funcionarios'];
-      response = this.getFuncionarios();
+      console.log(response['mensagem']);
+      this.getFuncionarios()
     })
     .catch(erro => {
       console.log(erro);
