@@ -29,15 +29,15 @@ ion-radio{
 }
 
 #nome{
-    color: #5260FF;
-}
-
-#cidade{
     color: #92949C;
 }
 
+#cidade{
+    color: #5260FF; 
+}
+
 #telefone{
-    color: #2BD36E;
+    color: #FFC409;
 }
 
 .dados{
@@ -46,9 +46,7 @@ ion-radio{
 }
 
 .adicionar{
-    --background: #00a8c6;
-    // align-items: right;
-    // justify-content: right;
+    --background: #34b912;
     margin-left: 320px;
 }
 
@@ -65,14 +63,29 @@ ion-radio{
 .modal{
     --background: rgb(174,226,57);
     --background: linear-gradient(90deg, rgba(174,226,57,1) 0%, rgba(249,242,231,1) 50%, rgba(64,192,203,1) 100%);
+    margin: 0;
 }
 
 .cadastro{
-    text-align: center;
+    text-align: left;
     color: #92949C;
 }
 
+.formulario{
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.sair{
+    --background: none;
+    margin-right: 10px;
+}
+
+
 .salvar{
-    --background: #8fbe00;
+    --background: #34b912;
+    margin-top: 30px;
+    height: 5vh;
+    width: 10vw;
     text-transform: capitalize;
 }

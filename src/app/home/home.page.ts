@@ -1,5 +1,5 @@
-import { Component} from '@angular/core';
-
+import { Component } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -11,10 +11,15 @@ export class HomePage {
   isLoading: boolean = false;
   funcionarios: any;
 
-  constructor(){
+  
+  constructor(private modalController: ModalController){
     this.getFuncionarios()
   }
-  
+
+  fecharModal() {
+    this.modalController.dismiss();
+  }
+
 
   getFuncionarios(){
     this.isLoading = true;
@@ -57,8 +62,6 @@ export class HomePage {
     })  
   }
 
-
-
   atualizar(CodFun: any, Dados: any){
     this.isLoading = true;
 
@@ -95,8 +98,6 @@ export class HomePage {
     })  
   }
 
-
-  
   inserirDados(Dados: any){
     this.isLoading = true;
     fetch('http://localhost/exercicio/funcionario/inserir_funcionario.php',
@@ -122,7 +123,8 @@ export class HomePage {
 		)
     .then(response => response.json())
     .then(response => {
-      this.funcionarios = response['funcionarios'];
+      // this.funcionarios = response['funcionarios'];
+      response = this.getFuncionarios();
     })
     .catch(erro => {
       console.log(erro);
@@ -131,8 +133,6 @@ export class HomePage {
       this.isLoading = false;
     })  
   }
-
-
 
   pesquisar(Dados: any){
     this.isLoading = true;
@@ -161,5 +161,4 @@ export class HomePage {
     })
 
   }
-
 }
