@@ -27,22 +27,22 @@
   </form>
     
   <ion-row>
-    <ion-col size="12">
+    <ion-col size="12"   class="margin"> 
       <ion-list>
         <ng-container *ngFor="let funcionario of this.funcionarios">
           <form #form='ngForm' (ngSubmit)="atualizar(funcionario.CodFun, form.value)">
           <ion-item>
-              <!-- <ion-label>{{ funcionario.CodFun }}</ion-label> -->
-              <ion-input [(ngModel)]="funcionario.Nome" name="nome" class="dados">Nome:</ion-input>
-              <ion-input [(ngModel)]="funcionario.Sobrenome" name="sobrenome" class="dados">Sobrenome:</ion-input>
-              <ion-input [(ngModel)]="funcionario.Cargo" name="cargo" class="dados">Cargo:</ion-input>
-              <ion-input [(ngModel)]="funcionario.Salario" name="salario" class="dados">Salário:</ion-input>
-              <ion-input [(ngModel)]="funcionario.DataNasc" name="dataNasc" class="dados">Data de Nascimento:</ion-input>
-              <ion-input [(ngModel)]="funcionario.Endereco" name="endereco" class="dados">Endereço:</ion-input>
-              <ion-input [(ngModel)]="funcionario.Cidade" name="cidade" class="dados">Cidade:</ion-input>
-              <ion-input [(ngModel)]="funcionario.CEP" name="cep" class="dados">CEP:</ion-input>
-              <ion-input [(ngModel)]="funcionario.Pais" name="pais" class="dados">País:</ion-input>
-              <ion-input [(ngModel)]="funcionario.Fone" name="fone" class="dados">Telefone:</ion-input>
+            <!-- <ion-label>{{ funcionario.CodFun }}</ion-label> -->
+            <ion-input [(ngModel)]="funcionario.Nome" name="nome" class="dados">Nome:</ion-input>
+            <ion-input [(ngModel)]="funcionario.Sobrenome" name="sobrenome" class="dados">Sobrenome:</ion-input>
+            <ion-input [(ngModel)]="funcionario.Cargo" name="cargo" class="dados">Cargo:</ion-input>
+            <ion-input [(ngModel)]="funcionario.Salario" name="salario" class="dados">Salário:</ion-input>
+            <ion-input [(ngModel)]="funcionario.DataNasc" name="dataNasc" class="dados">Data de Nascimento:</ion-input>
+            <ion-input [(ngModel)]="funcionario.Endereco" name="endereco" class="dados">Endereço:</ion-input>
+            <ion-input [(ngModel)]="funcionario.Cidade" name="cidade" class="dados">Cidade:</ion-input>
+            <ion-input [(ngModel)]="funcionario.CEP" name="cep" class="dados">CEP:</ion-input>
+            <ion-input [(ngModel)]="funcionario.Pais" name="pais" class="dados">País:</ion-input>
+            <ion-input [(ngModel)]="funcionario.Fone" name="fone" class="dados">Telefone:</ion-input>
               
             <ion-button type="submit" class="ok"><ion-icon name="checkmark"></ion-icon></ion-button> 
             <ion-button (click)="remover(funcionario.CodFun)"  class="remover"><ion-icon name="trash"></ion-icon></ion-button>
