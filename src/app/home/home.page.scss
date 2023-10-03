@@ -52,16 +52,19 @@ ion-radio{
 .dados h1{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: small;
+    // text-transform: uppercase;
     color: #40c0cb;
+    // font-weight: bolder;
 }
 
 .adicionar{
     --background: #60c547;
-    margin-left: 385px;
+    margin-left: 380px;
 }
 
 .ok{
     --background: #8fbe00;
+    margin-right: 10px;
 
 }
 
