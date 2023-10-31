@@ -74,4 +74,7 @@ export class AnimacaoPage implements OnInit {
   ngOnInit() {
   }
 
+  // https://angular.io/guide/animations
+
+
 }
