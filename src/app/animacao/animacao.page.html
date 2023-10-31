@@ -1,15 +1,32 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      a
-    </ion-title>
+  <ion-toolbar [@openClose]="isOpen ? 'open' : 'closed'">
+    <ion-title>animacao</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<!-- <ion-content [fullscreen]="true">
+<ion-content 
+  [fullscreen]="true" 
+  [scrollEvents]="true" 
+  (ionScroll)="setPosicao($any($event))"
+>
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">animacao</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
   <ion-row>
     <ion-col>
-      <ion-button>Botão de exemplo</ion-button>
+      <ion-button (click)="toggle()">Botão de exemplo EXTENDE</ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <ion-button
+       [@botaoFade]="fade ? 'fadeIn' : 'fadeOut'"
+       (click)="setFade()"
+       >Botão de exemplo VAI P LADO, APAGA E VOLTA</ion-button>
     </ion-col>
   </ion-row>
 
@@ -67,9 +84,5 @@
     </ion-col>
   </ion-row>
 
-  <ion-row>
-    <ion-col>
-      <ion-button>Botão de exemplo</ion-button>
-    </ion-col>
-  </ion-row>
-</ion-content> -->
+  <!-- lazy loading carrega por demanda -->
+</ion-content>
